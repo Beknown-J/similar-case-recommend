@@ -36,7 +36,7 @@ train_seg <- segment(re_train$query, cutter) # 产出格式为每行一个分词
 #### (1) initial 
 numb <- 1
 filefreq_init <- freq(train_seg[[numb]])   ## initial word frequence
-filefreq_init <- filefreq_init[order(filefreq_init$freq, decreasing = T),]
+filefreq_init <- filefreq_init[order(filefreq_init$freq, decreasing = T), ]
 
 # filename1 <- paste('filefreq_init','_', numb, ".txt",sep = '')
 # write.csv(filefreq_init, filename1, fileEncoding = 'UTF-8')

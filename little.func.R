@@ -4,13 +4,23 @@
 ## 
 #########
 re_gsub <- function(dat){
-  ans <- gsub("([0-9A-Za-z ])", "", dat)  ## del numbers and blank
-  ans
+  ans1 <- gsub("([ ])", "", dat)  ## del numbers and blank ## 0-9A-Za-z
+  ans1
 }
+
+regular.gsub <- function(dat, reg){
+  res <- dat
+  for(i in seq_along(reg)){
+    res <- gsub(reg[i], '', res)
+  }
+  ans <- gsub("([0-9A-Za-z])", "", res)
+  return(ans)
+}
+
 
 #########
 n.sel <- function(dat, label){
-  ans <- enc2utf8(dat[which(names(dat) %in% label)])
+  ans <- enc2utf8(dat[which((names(dat) %in% label))])
   ans
 }
 
@@ -28,10 +38,13 @@ reglar.del <- function(dat){
 }
 
 #########
-sort50 <- function(dat, nt=50) {
+sort.dat <- function(dat, nt=50) {
   dat_sort <- sort(dat, decreasing = TRUE)
-  ans <- dat_sort[1: nt]
-  names(ans)
+  
+  res <- dat_sort[1: nt]
+  res <- res[res != 0]
+  ans <- names(res)
+  return(ans)
 }
 
 
